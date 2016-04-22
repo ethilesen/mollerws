@@ -236,7 +236,7 @@ Hvis du har node,npm og git lokalt start slik.
 - Kjør appen lokalt (node app.js) - prøv med en browser på http://localhost:3000
 - Nå bør det virke og du er nå klar til å dytte dette over til Bluemix.
 - Legg til alle filene i det nyoprettede git - gitt add *
-- Opprett et prosject i DevOps Services. https://hub.jazz.net - samme bruker som i bluemix.
+- Opprett et prosjekt i DevOps Services. https://hub.jazz.net - samme bruker som i bluemix.
 - Velg et navn og trykk på create new repository - git repro on Bluemix.
 - Noter deg git url og bruk default settings på resten.
 - Push innholdet av din locale git opp til Bluemix.
@@ -260,3 +260,7 @@ cf push -n "espensdev" -d "mybluemix.net" "${CF_APP}"
 - Du kan kjøre Stage ved å trykke på play knappen eller gjøre en ny commit/push av koden fra lokalt repro.
 - Det er jo som dere sikkert ser mange muligheter hvordan bygge deploy rundt dette.
 - Utvid med et Stage til og deploy det til et annet space eller site.
+- Jeg antar at dere nå forstår hvordan dere kan gjøre hele jobben i DevOps Services!
+- Hvis ikke - opprett et prosjekt i DevOps. Gå til Edit Code og kopier in filene fra zip filen
+- Editer app.js med de samme nøkklene ( google,twitter,cloudant).
+- Bygg pipeline.....
