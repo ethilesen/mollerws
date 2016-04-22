@@ -28,7 +28,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 <img src="images/mimg4.png" height="300px" width="300px">
 
 - Finn noe engelsk tekst feks http://time.com/4267058/donald-trump-aipac-speech-transcript/
-- Copy paste teksten in i inject noden din (som string) - trykk på deploy knappen oppe til høyre og kjør flowen ved å trykke inject knappen.
+- Lim inn teksten in i inject noden - som string - trykk på deploy knappen oppe til høyre og kjør flowen ved å trykke inject knappen.
 - Får du et object ut i debug vinduet til høyere ? Dette er hele objektet, det vi skal bruke er bare BIG 5 delen
 - La oss lage et filter som bare skriver ut de kategoriene vi skal bruke.
 - Velg en function node og lag en funksjon som dette:
@@ -49,7 +49,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
  msg.payload = msg.instights;
  return msg;
 ```
- 
+
 <img src="images/mimg2.png" height="400px" width="600px">
 
 - Test flow - se at du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
@@ -147,7 +147,7 @@ return msg;
 - Lag function noden og test flowen. OK ?
 - Neste nå er å hente tekst fra twitter….
 - En måte er å bare bruke en npm modul som heter Twit…  Den må legges til i package.json og blumix-settings.js
-- Du trenger også consumer og access key fra twitter. Gå på twitter dev og lag en app - generer key's.
+- Du trenger også consumer og access key fra twitter. Gå på https://apps.twitter.com og lag en app - generer key's.
 - Klipp ut og lim dem inn i en function node.
 
 ``` javascript
