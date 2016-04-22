@@ -12,7 +12,7 @@ Dere står helt fritt till hvordan dere ønsker å løse denne oppgaven - om der
 Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-Red og siden bygger en node.js app med et enkelt gui.
 
 
-- Opprett en konto på Bluemix - hvis du ikke allerede har  http://blumix.net - sign-up.
+- Opprett en konto på Bluemix - hvis du ikke allerede har  http://Bluemix.net - sign-up.
 - Opprett en ny app basert på en Node-Red Starter Boilerplate.
 - Følg steg i «getting started» - last ned CF tool og starter code ( den trenger vi senere da vi skal endre litt på oppsettet av node-red).
 - Legg en Watson Personal insights service til appen din ved å gå på connections fanen - connect new - finn en watson peronal insights service og bekreft re-stage av appen.
