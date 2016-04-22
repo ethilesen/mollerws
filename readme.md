@@ -53,13 +53,21 @@ return msg;) og velg i cloudant noden "store only payload object"
 
   // bluemix-settings.js
   functionGlobalContext: {
+
         request:require('request'),
+
       	express:require('express'),
+
       	util:require('util'),
+
       	twit:require('twit'),
+
       	bodyParser:require('body-parser'),
+
       	googleTranslate:require('google-translate')
+
       },
+      
 
     // la til noen til vi trenger senere i oppgaven
 
