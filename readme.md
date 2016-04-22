@@ -209,8 +209,10 @@ googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
             node.send(msg);
           }
 });
-´´´
+
+```
+
 
 - Nå skal du ha en komplet flow som henter tweets - sender de til watson - samenligner resultat med referanse database - og printer er liste med scores mot de modellene du har der. Du kan prøve å endre på dataene dine i databasen slik at du får treff på mot en bil spesiell bil…
 
-- Du finner hele flowen her /flows/kompletflow.json
+- Du finner hele flowen her <link src="/flows/kompletflow.json">
