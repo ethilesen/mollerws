@@ -14,7 +14,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 
 - Opprett en konto på Bluemix - hvis du ikke allerede har  http://Bluemix.net - sign-up.
 - Opprett en ny app basert på en Node-Red Starter Boilerplate.
-- Følg steg i «getting started» - last ned CF tool og starter code ( den trenger vi senere da vi skal endre litt på oppsettet av node-red).
+- Følg steg i "getting started" - last ned CF tool og starter code (den trenger vi senere da vi skal endre litt på oppsettet av node-red).
 - Legg en Watson Personal insights service til appen din ved å gå på connections fanen - connect new - finn en watson peronal insights service og bekreft re-stage av appen.
 - Når Node-red har startet gå til url du valgte som app navn.
 - La oss lage en enkel flow for å teste ut tjenesten.
@@ -26,9 +26,9 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Endre debug noden til å logge msg.insights
 <img src=images/mimg4.png>
 - Finn noe engelsk tekst feks http://time.com/4267058/donald-trump-aipac-speech-transcript/
-- Copy paste teksten in i inject noden din (som string) - kjør flowen ved å trykke inject knappen.
+- Copy paste teksten in i inject noden din (som string) - trykk på deploy knappen oppe til høyre og kjør flowen ved å trykke inject knappen.
 - Får du et object ut i debug vinduet til høyere ? Dette er hele objektet, det vi skal bruke er bare BIG 5 delen
-- La oss lage et filter som bare skriver ut de vi skal bruke.
+- La oss lage et filter som bare skriver ut de kategoriene vi skal bruke.
 - Velg en function node og lag en funksjon som dette:
 
   var score = msg.insights.children[0].children[0].children;
@@ -41,9 +41,12 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 
 - Endre debug noden din tilbake til å logge msg.payload
 - Test flowen - du skal se de fem kategoriene vi skal bruke i denne oppgaven.
-- La oss på enkleste måte bygge en referanse base. Velg en Coudant out put node og skriv hele insigth objectet dit.
-- Lag en funksjon som putter msg.insights over i msg.payload ( msg.payload = msg.instights;
-return msg;) og velg i cloudant noden "store only payload object"
+- La oss på enkleste måte bygge en referanse base. Velg en Coudant out-put node og skriv hele insigth objectet dit.
+- Lag en funksjon som putter msg.insights over i msg.payload 
+- ```javascript
+- msg.payload = msg.instights;
+- return msg;)```
+  og velg i cloudant noden "store only payload object"
 
 <img src="images/mimg2.png" height="800" width="800">
 
