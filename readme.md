@@ -19,3 +19,4 @@ La os lage en enkel flow for å teste ut tjenesten.
 Velg en watson peronality insights node fra paletten på venstre side.
 Legg til en inject node + en debug node og koble dem sammen slik
 Endre debug noden til å ligge msg.insights
+<img src=http://1.vgc.no/drfront/images/2016/04/22/c=59,284,854,471;w=652;h=360;274968.jpg>
