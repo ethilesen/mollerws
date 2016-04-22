@@ -55,68 +55,32 @@ return msg;) og velg i cloudant noden "store only payload object"
 
   functionGlobalContext: {
 
-        request:require('request'),
+    request:require('request'),
 
-      	express:require('express'),
+    express:require('express'),
 
-      	util:require('util'),
+    util:require('util'),
 
-      	twit:require('twit'),
+    twit:require('twit'),
 
-      	bodyParser:require('body-parser'),
+    bodyParser:require('body-parser'),
 
-      	googleTranslate:require('google-translate')
+    googleTranslate:require('google-translate')
 
-      },
-
+      }
 
     // la til noen til vi trenger senere i oppgaven
 
   // package.json
 
   "dependencies": {
-
-    "when": "~3.x",
-
-    "mongodb": "~1.4.x",
-
-    "nano": "~5.11.0",
-
-    "cfenv":"~1.0.0",
-
-    "feedparser":"~0.19.2",
-
-    "redis":"~0.10.1",
-
-    "node-red": "0.x",
-
-    "node-red-bluemix-nodes":"1.x",
-
-    "node-red-node-watson":"0.x",
-
-    "node-red-node-openwhisk":"0.x",
-
-    "node-red-node-cf-cloudant":"0.x",
-
-    "node-red-contrib-scx-ibmiotapp":"0.x",
-
-    "node-red-contrib-ibmpush":"0.x",
-
-    "node-red-contrib-bluemix-hdfs":"0.x",
-
-    "node-red-nodes-cf-sqldb-dashdb":"0.x",
-
+  ........
     "request":"2.x",
-
     "twit":"2.x",
-
     "body-parser":"1.x",
-
     "google-translate":"1.x",
-
     "express":"4.x"
-
-    },
+    }
 
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
 - cf push appname
