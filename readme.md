@@ -47,7 +47,7 @@ return msg;) og velg i cloudant noden "store only payload object"
 
 <img src="images/mimg2.png" height="800" width="800">
 
-- Test flow å se du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
+- Test flow - se at du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
 - Gi navn på de ulike dokumentene i basen ved å endre "name": «root» til feks «name»:»A5»
 - Det neste vi trenger er en funksjon som finner det dokumentet som er mest likt det svaret du får fra watson.
 - Tanken er å lage en function som tar msg.insights fra watson noden - gjør et call til cloudant for å hente alle documentene kjøre en matte funksjon som sammenligner BIG 5 og lager en liste basert på score. Til det trenger jeg et kall mot cloudant - velger nå å gjøre det med et rest call rett mot basen - og en matte funksjon som gjør scoring jobben. Math.pow og Math.sqrt gjør jobben.
@@ -78,13 +78,13 @@ return msg;) og velg i cloudant noden "store only payload object"
 ```
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
 - cf push appname
-- En function som samenligner data fra watson med det du har i basen kan se noe slikt ut:
+- En function som sammenligner data fra watson med det du har i basen - kan se noe slikt ut:
 ```javascript
 var user = msg.insights;
 var resarray = [];
 var cars;
 var request = global.get('request');
-var getCars = function(callback){
+var getCars = function(callback){ // denne henter dokumentene fra cloudant...
 var url = 'URL to cloudant/databasename/_all_docs?include_docs=true';
   request({
     url: url,
@@ -101,7 +101,7 @@ var url = 'URL to cloudant/databasename/_all_docs?include_docs=true';
 getCars(function(err, result){
     if(err){
       console.log("Error " + JSON.stringfy(err));
-    } else {
+    } else { // hvis vi får tilbake et ogject fra cloudant løper vi igjennom det og sender det til similar funksjonen.
      result.rows.forEach(function(item) {
      console.log("detter er item: "+item.doc.name);
      similar(user, item.doc);
@@ -141,7 +141,7 @@ return msg;
 
 - Lag function noden og test flowen. OK ?
 - Neste nå er å hente tekst fra twitter….
-- En måte er å bare bruke en npm modul som heter Twit… legg til i package.json og blumix-settings.js som
+- En måte er å bare bruke en npm modul som heter Twit…  Den må legges til i package.json og blumix-settings.js
 - Du trenger også consumer og access key fra twitter. Gå på twitter dev og lag en app - generer key's.
 - Klipp ut og lim dem inn i en function node.
 
@@ -215,10 +215,9 @@ googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
 ```
 
 
-- Nå skal du ha en komplet flow som henter tweets - sender de til watson - samenligner resultat med referanse database - og printer er liste med scores mot de modellene du har der. Du kan prøve å endre på dataene dine i databasen slik at du får treff på mot en bil spesiell bil…
+- Nå skal du ha en komplett flow som henter tweets - sender de til watson - sammenligner resultatet med referanse databasen - og printer er liste med scores mot de modellene du har der. Du kan prøve å endre på dataene dine i databasen slik at du får treff på mot en bil spesiell bil… Du har jo allerede skrevet ut kategoriene... Finn de i dokumentet og endre på tallene...
 
 - <a href="/flows/flow1.json">Du finner hele flowen her..</a>
-
 
 
 <h1>Oppgave 2</h1>
