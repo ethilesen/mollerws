@@ -1,4 +1,6 @@
-Bluemix oppgave MøllerGruppen
+<h1>Bluemix oppgave MøllerGruppen</h1>
+
+<h1>Oppgave 1 </h1>
 
 
 Denne oppgaven tar utgangspunkt i en Watson tjeneste som kan benyttes for å gjøre en personlighets analyse av tekst. Mer om tjenesten her: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html
@@ -216,3 +218,45 @@ googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
 - Nå skal du ha en komplet flow som henter tweets - sender de til watson - samenligner resultat med referanse database - og printer er liste med scores mot de modellene du har der. Du kan prøve å endre på dataene dine i databasen slik at du får treff på mot en bil spesiell bil…
 
 - <a href="/flows/flow1.json">Du finner hele flowen her..</a>
+
+
+
+<h1>Oppgave 2</h1>
+
+Her skal vi sette opp "løsningen" med et GUI i node.js
+Du trenger node.js, npm, git lokalt på maskinen din. Eller du kan bruke IBM DevOps Services på nett.
+Jeg tror det er et relevant eksemple å ha koden kjørende lokalt og push over til bluemix når du ser alt virker greit. Men som nevnt du kan gjøre alt fra DevOps Services - noe som blir forklart til slutt.
+
+Hvis du har node,npm og git lokalt start slik.
+
+- Set opp et localt git ( git init ...)
+- Last ned denne <a href="/nodeJSkode/oppgave2.zip">zip filen.....</a> unzip in i det nye gitet du har laget.
+- I root katalogen kjører du 'npm install'
+- Editer app.js med google key, twitter, cloudant url og database navn. (fra oppgave 1)
+- Kjør appen lokalt (node app.js) - prøv med en browser på http://localhost:3000
+- Nå bør det virke og du er nå klar til å dytte dette over til Bluemix.
+- Legg til alle filene i det nyoprettede git - gitt add *
+- Opprett et prosject i DevOps Services. https://hub.jazz.net - samme bruker som i bluemix.
+- Velg et navn og trykk på create new repository - git repro on Bluemix.
+- Noter deg git url og bruk default settings på resten.
+- Push innholdet av din locale git opp til Bluemix.
+- git remote add origin <din git url>
+- git push origin master
+- Nå skal du se ditt prosjekt i DevOps med din locale kode hvis du trykker på edit code knappen.
+- Nå skal vi bygge en pipeline for å deploye koden til to ulike blumix miljøer(dev + prod) du kan velge om det skal være på to siter eller i to forskjellige spaces...
+- Trykk på Build&Deploy knappen i DevOps konsollet.
+- Trykk på add Stage - gi stage navn 'Dev'
+- Input bør være riktig satt opp med peker på gir reproe ditt.
+- Trykk på jobb fanen og add jobb - Deploy
+- Velg et target miljø og gi appen et navn feks espensdev
+- Deployscripet må tilpasses litt for å også sette opp watson tjenesten.(For Cloudant bruker vi den fra oppgave 1 bare for å spare litt tid i oppgaven - vi kunne selvsagt satt opp en ny og replikert over test data)    
+- Deploy script
+```javascript
+#!/bin/bash
+cf cs personality_insights tiered tweetmewatson-pi-mo
+# -n = navn og -d = domain mybluemix.net for US og eu-gb.mybluemix.net for UK
+cf push -n "espensdev" -d "mybluemix.net" "${CF_APP}"  
+```
+- Du kan kjøre Stage ved å trykke på play knappen eller gjøre en ny commit/push av koden fra lokalt repro.
+- Det er jo som dere sikkert ser mange muligheter hvordan bygge deploy rundt dette.
+- Utvid med et Stage til og deploy det til et annet space eller site.
