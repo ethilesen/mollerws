@@ -19,7 +19,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Velg en watson peronality insights node fra paletten på venstre side.
 - Legg til en inject node + en debug node og koble dem sammen slik
 
-<img src=images/mimg1.png>
+<img src="images/mimg1.png" height="200" width="200">
 
 - Endre debug noden til å logge msg.insights
 <img src=images/mimg4.png>
