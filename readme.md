@@ -22,6 +22,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 <img src=images/mimg1.png>
 
 - Endre debug noden til å logge msg.insights
+<img src=images/mimg4.png>
 - Finn noe engelsk tekst feks http://time.com/4267058/donald-trump-aipac-speech-transcript/
 - Copy paste teksten in i inject noden din - kjør flowen ved å trykke inject knappen.
 - Får du et object ut i debug vinduet til høyere ? Dette er hele objektet, det vi skal bruke er bare BIG 5 delen
@@ -63,6 +64,7 @@ return msg;) og velg i cloudant noden "store only payload object"
     // la til noen til vi trenger senere i oppgaven
 
   // package.json
+
   "dependencies": {
     "when": "~3.x",
     "mongodb": "~1.4.x",
@@ -85,6 +87,7 @@ return msg;) og velg i cloudant noden "store only payload object"
     "google-translate":"1.x",
     "express":"4.x"
     },
+
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
 - cf push appname
 - En function som samenligner data fra watson med det du har i basen kan se noe slikt ut:
