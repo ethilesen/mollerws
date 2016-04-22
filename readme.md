@@ -253,6 +253,7 @@ Hvis du har node,npm og git lokalt start slik.
 ```javascript
 #!/bin/bash
 cf cs personality_insights tiered tweetmewatson-pi-mo
+cf bs "${CF_APP}" tweetmewatson-pi-mo 
 # -n = navn og -d = domain mybluemix.net for US og eu-gb.mybluemix.net for UK
 cf push -n "espensdev" -d "mybluemix.net" "${CF_APP}"  
 ```
