@@ -25,7 +25,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 
 - Endre debug noden til å logge msg.insights
 
-<img src="images/mimg4.png" height="400px" width="400px">
+<img src="images/mimg4.png" height="300px" width="300px">
 
 - Finn noe engelsk tekst feks http://time.com/4267058/donald-trump-aipac-speech-transcript/
 - Copy paste teksten in i inject noden din (som string) - trykk på deploy knappen oppe til høyre og kjør flowen ved å trykke inject knappen.
@@ -141,7 +141,7 @@ return msg;
 ```
 
 
-<img src=images/mimg3.png>
+<img src="images/mimg3.png" height="400px" width="600px">
 
 
 - Lag function noden og test flowen. OK ?
@@ -197,7 +197,7 @@ console.log("Got request for tweets on : " + query);
 ```
 - Lag en input node hvor du sender in {«id»:»@twitternavn»} som JSON
 
-<img src="images/mimg5.png">
+<img src="images/mimg5.png" height="300px" width="300px">
 
 - Test flow og se du får tweets tilbake som tekst. Send den til watson og se om flowen virker.
 - Watson personality virker bare på engelsk og spansk for tiden - det er jo enkelt å bruke google til oversetting fra norsk til engelsk…
