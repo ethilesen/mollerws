@@ -77,7 +77,7 @@ return msg;) og velg i cloudant noden "store only payload object"
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
 - cf push appname
 - En function som samenligner data fra watson med det du har i basen kan se noe slikt ut:
-```
+```javascript
 var user = msg.insights;
 var resarray = [];
 var cars;
@@ -138,3 +138,79 @@ return msg;
 
 
 - Lag function noden og test flowen. OK ?
+- Neste nå er å hente tekst fra twitter….
+- En måte er å bare bruke en npm modul som heter Twit… legg til i package.json og blumix-settings.js som
+- Du trenger også consumer og access key fra twitter. Gå på twitter dev og lag en app - generer key's.
+- Klipp ut og lim dem inn i en function node.
+
+``` javascript
+var express = global.get('express'),
+    app = express(),
+    extend = global.get('util')._extend,
+    Twit = global.get('twit');
+var bodyParser = global.get('bodyParser');
+    app.use(bodyParser.json()); // support json encoded bodies
+    app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+// Twitter connection variables - go twitterdev to optain key's
+var tweet = new Twit({
+    consumer_key: '<>',
+    consumer_secret: '<>',
+    access_token: '<>',
+    access_token_secret: '<>'
+});
+
+var query = msg.payload.id;
+var options;
+var tpath;
+var tpush;
+
+console.log("Got request for tweets on : " + query);
+    options = {
+        screen_name: query,
+        count: 200,
+        include_rts: false
+        };
+    tpath = 'statuses/user_timeline';
+    var tweets = [];
+    // Send a get to the Twitter API to retrieve a specifice user's timeline
+   tweet.get(tpath, options, function(err, data) {
+        if (err) {
+            console.log("Something went wrong with twitter api: " + err);
+        }else{
+        	// Loop through and add tweets to an array
+        	for (var i = 0; i<data.length; i++){
+        		tweets.push(data[i].text);
+        	}
+        }
+    console.log("Returning tweets" +tweets );
+        msg.payload = JSON.stringify(tweets);
+    node.send(msg);
+ }); // End tweet.get
+```
+- Lag en input node hvor du sender in {«id»:»@twitternavn»} som JSON
+
+<img src="images/mimg5.png">
+
+- Test flow og se du får tweets tilbake som tekst. Send den til watson og se om flowen virker.
+- Watson personality virker bare på engelsk og spansk for tiden - det er jo enkelt å bruke google til oversetting fra norsk til engelsk…
+
+```javascript
+var googleTranslate = global.get('googleTranslate')('<get key from google>');
+var transtweet = [];
+googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
+          if(err){
+            console.log("obs something wrong at Google... " + err);
+          }else{
+          for (var i =0; i<translations.length; i++){
+            transtweet.push(translations[i].translatedText);
+            }
+            msg.payload=JSON.stringify(transtweet);
+            node.send(msg);
+          }
+});
+´´´
+
+- Nå skal du ha en komplet flow som henter tweets - sender de til watson - samenligner resultat med referanse database - og printer er liste med scores mot de modellene du har der. Du kan prøve å endre på dataene dine i databasen slik at du får treff på mot en bil spesiell bil…
+
+- Du finner hele flowen her /flows/kompletflow.json
