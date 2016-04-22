@@ -24,7 +24,9 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 <img src="images/mimg1.png">
 
 - Endre debug noden til å logge msg.insights
-<img src=images/mimg4.png>
+
+<img src="images/mimg4.png" height="400px" width="400px">
+
 - Finn noe engelsk tekst feks http://time.com/4267058/donald-trump-aipac-speech-transcript/
 - Copy paste teksten in i inject noden din (som string) - trykk på deploy knappen oppe til høyre og kjør flowen ved å trykke inject knappen.
 - Får du et object ut i debug vinduet til høyere ? Dette er hele objektet, det vi skal bruke er bare BIG 5 delen
