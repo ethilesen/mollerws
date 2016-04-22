@@ -50,7 +50,7 @@ return msg;) og velg i cloudant noden "store only payload object"
 - Det neste vi trenger er en funksjon som finner det dokumentet som er mest likt det svaret du får fra watson.
 - Tanken er å lage en function som tar msg.insights fra watson noden - gjør et call til cloudant for å hente alle documentene kjøre en matte funksjon som sammenligner BIG 5 og lager en liste basert på score. Til det trenger jeg et kall mot cloudant - velger nå å gjøre det med et rest call rett mot basen - og en matte funksjon som gjør scoring jobben. Math.pow og Math.sqrt gjør jobben.
 - For rest called ønsker jeg å bruke request og da må det legges til i prosjectet og enables for node red. Dette gjøres vel å oppdatere package.json legg til "express":"4.x" under dependencies og oppdater bluemix-settings.js
-
+<ul>
   // bluemix-settings.js
 
   functionGlobalContext: {
@@ -70,7 +70,7 @@ return msg;) og velg i cloudant noden "store only payload object"
       }
 
     // la til noen til vi trenger senere i oppgaven
-
+</ul>
   // package.json
 
   "dependencies": {
