@@ -42,14 +42,13 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Endre debug noden din tilbake til å logge msg.payload
 - Test flowen - du skal se de fem kategoriene vi skal bruke i denne oppgaven.
 - La oss på enkleste måte bygge en referanse base. Velg en Coudant out-put node og skriv hele insigth objectet dit.
-- Lag en funksjon som putter msg.insights over i msg.payload 
-- 
-- msg.payload = msg.instights;
-- return msg;
-- 
-  og velg i cloudant noden "store only payload object"
-
-<img src="images/mimg2.png" height="800" width="800">
+- Lag en funksjon som putter msg.insights over i msg.payload -  og velg i cloudant noden "store only payload object"
+```
+ msg.payload = msg.instights;
+ return msg;
+```
+ 
+<img src="images/mimg2.png" height="400px" width="400px">
 
 - Test flow - se at du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
 - Gi navn på de ulike dokumentene i basen ved å endre "name": «root» til feks «name»:»A5»
