@@ -50,7 +50,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
  return msg;
 ```
  
-<img src="images/mimg2.png" height="400px" width="400px">
+<img src="images/mimg2.png" height="400px" width="600px">
 
 - Test flow - se at du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
 - Gi navn på de ulike dokumentene i basen ved å endre "name": «root» til feks «name»:»A5»
