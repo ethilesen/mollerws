@@ -43,7 +43,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Lag en funksjon som putter msg.insights over i msg.payload ( msg.payload = msg.instights;
 return msg;) og velg i cloudant noden "store only payload object"
 
-<img src=images/mimg2.png height="800" width="800">
+<img src=images/mimg2.png height="600" width="600">
 
 - Test flow å se du for et object over i cloudant basen din. Du finner gui på den under connections fanen i appen din (bluemix gui). Kjør flowen noen ganger slik at vi får flere dokumenter i basen.
 - Gi navn på de ulike dokumentene i basen ved å endre "name": «root» til feks «name»:»A5»
