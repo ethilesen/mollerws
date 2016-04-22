@@ -52,6 +52,7 @@ return msg;) og velg i cloudant noden "store only payload object"
 - For rest called ønsker jeg å bruke request og da må det legges til i prosjectet og enables for node red. Dette gjøres vel å oppdatere package.json legg til "express":"4.x" under dependencies og oppdater bluemix-settings.js
 
   // bluemix-settings.js
+
   functionGlobalContext: {
 
         request:require('request'),
@@ -67,33 +68,54 @@ return msg;) og velg i cloudant noden "store only payload object"
       	googleTranslate:require('google-translate')
 
       },
-      
+
 
     // la til noen til vi trenger senere i oppgaven
 
   // package.json
 
   "dependencies": {
+
     "when": "~3.x",
+
     "mongodb": "~1.4.x",
+
     "nano": "~5.11.0",
+
     "cfenv":"~1.0.0",
+
     "feedparser":"~0.19.2",
+
     "redis":"~0.10.1",
+
     "node-red": "0.x",
+
     "node-red-bluemix-nodes":"1.x",
+
     "node-red-node-watson":"0.x",
+
     "node-red-node-openwhisk":"0.x",
+
     "node-red-node-cf-cloudant":"0.x",
+
     "node-red-contrib-scx-ibmiotapp":"0.x",
+
     "node-red-contrib-ibmpush":"0.x",
+
     "node-red-contrib-bluemix-hdfs":"0.x",
+
     "node-red-nodes-cf-sqldb-dashdb":"0.x",
+
     "request":"2.x",
+
     "twit":"2.x",
+
     "body-parser":"1.x",
+
     "google-translate":"1.x",
+
     "express":"4.x"
+
     },
 
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
@@ -101,59 +123,112 @@ return msg;) og velg i cloudant noden "store only payload object"
 - En function som samenligner data fra watson med det du har i basen kan se noe slikt ut:
 
 var user = msg.insights;
+
 var resarray = [];
+
 var cars;
+
 var request = global.get('request');
+
 var getCars = function(callback){
+
 var url = 'URL to cloudant/databasename/_all_docs?include_docs=true';
+
   request({
+
     url: url,
+
     json: true },
+
     function (error, response, body) {
+
     if (!error && response.statusCode == 200) {
+
         console.log("from cloudant"+body);
+
       callback(null,body);
+
     } else {
+
       callback(error);
+
     }
+
   })
-}
-getCars(function(err, result){
-    if(err){
-      console.log("Error " + JSON.stringfy(err));
-    } else {
-     result.rows.forEach(function(item) {
-     console.log("detter er item: "+item.doc.name);
-     similar(user, item.doc);
-      });
-      console.log("all done : " + JSON.stringify(resarray));
-      resarray.sort(function(a,b){return b.Score - a.Score});
-      msg.payload = JSON.stringify(resarray);
-      node.send(msg);
-    }
-  });
-// Dette gjør sammenligningen av de fem verdiene
-function similar (origin,target) {
-  origin = typeof(origin) === 'string' ? JSON.parse(origin) : origin;
-  target = typeof(target) === 'string' ? JSON.parse(target) : target;
-  var distance = 0.0,
-    origin_traits = origin.children[0].children[0].children,
-    target_traits = target.children[0].children[0].children;
-    //console.log("user:" + origin.length);
-    //console.log("car:" + target_traits.length);
-    // for each trait in origin personality...
-  origin_traits.forEach(function(trait, i) {
-      console.log("used categories: " + trait.name+":"+trait.percentage);
-    distance += Math.pow(trait.percentage - target_traits[i].percentage, 2);
-  });
-  var ret = 1 - (Math.sqrt(distance / origin_traits.length));
-  msg.payload = {"Score":ret,"Merke": target.name,"Model":target.id,"DocId":target._id};
-  resarray.push(msg.payload);
-  //node.send(msg);
-  return resarray;
+
 }
 
+getCars(function(err, result){
+
+    if(err){
+
+      console.log("Error " + JSON.stringfy(err));
+
+    } else {
+
+     result.rows.forEach(function(item) {
+
+     console.log("detter er item: "+item.doc.name);
+
+     similar(user, item.doc);
+
+      });
+
+      console.log("all done : " + JSON.stringify(resarray));
+
+      resarray.sort(function(a,b){return b.Score - a.Score});
+
+      msg.payload = JSON.stringify(resarray);
+
+      node.send(msg);
+
+    }
+
+  });
+
+// Dette gjør sammenligningen av de fem verdiene
+
+function similar (origin,target) {
+
+  origin = typeof(origin) === 'string' ? JSON.parse(origin) : origin;
+
+  target = typeof(target) === 'string' ? JSON.parse(target) : target;
+
+  var distance = 0.0,
+
+    origin_traits = origin.children[0].children[0].children,
+
+    target_traits = target.children[0].children[0].children;
+
+    //console.log("user:" + origin.length);
+
+    //console.log("car:" + target_traits.length);
+
+    // for each trait in origin personality...
+
+  origin_traits.forEach(function(trait, i) {
+
+      console.log("used categories: " + trait.name+":"+trait.percentage);
+
+    distance += Math.pow(trait.percentage - target_traits[i].percentage, 2);
+
+  });
+
+  var ret = 1 - (Math.sqrt(distance / origin_traits.length));
+
+  msg.payload = {"Score":ret,"Merke": target.name,"Model":target.id,"DocId":target._id};
+
+  resarray.push(msg.payload);
+
+  //node.send(msg);
+
+  return resarray;
+
+}
+
+
 return msg;
+
 
 
 <img src=images/mimg3.png>
