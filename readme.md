@@ -1,6 +1,6 @@
 <h1>Bluemix oppgave MøllerGruppen</h1>
 
-<h1>Oppgave 1 </h1>
+<h2>Oppgave 1 </h2>
 
 
 Denne oppgaven tar utgangspunkt i en Watson tjeneste som kan benyttes for å gjøre en personlighets analyse av tekst. Mer om tjenesten her: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html
@@ -225,7 +225,7 @@ googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
 - <a href="/flows/flow1.json">Du finner hele flowen her..</a>
 
 
-<h1>Oppgave 2</h1>
+<h2>Oppgave 2</h2>
 
 Her skal vi sette opp "løsningen" med et GUI i node.js
 Du trenger node.js, npm, git lokalt på maskinen din. Eller du kan bruke IBM DevOps Services på nett.
