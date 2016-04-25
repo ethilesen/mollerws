@@ -92,7 +92,7 @@ var resarray = [];
 var cars;
 var request = global.get('request');
 var getCars = function(callback){ // denne henter dokumentene fra cloudant...
-var url = 'URL to cloudant/databasename/_all_docs?include_docs=true';
+var url = 'username+password+URL to cloudant/databasename/_all_docs?include_docs=true';
   request({
     url: url,
     json: true },
