@@ -56,7 +56,8 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Gi navn på de ulike dokumentene i basen ved å endre "name": «root» til feks «name»:»A5»
 - Det neste vi trenger er en funksjon som finner det dokumentet som er mest likt det svaret du får fra watson.
 - Tanken er å lage en function som tar msg.insights fra watson noden - gjør et call til cloudant for å hente alle documentene kjøre en matte funksjon som sammenligner BIG 5 og lager en liste basert på score. Til det trenger jeg et kall mot cloudant - velger nå å gjøre det med et rest call rett mot basen - og en matte funksjon som gjør scoring jobben. Math.pow og Math.sqrt gjør jobben.
-- For rest called ønsker jeg å bruke request og da må det legges til i prosjectet og enables for node red. Dette gjøres vel å oppdatere package.json legg til "express":"4.x" under dependencies og oppdater bluemix-settings.js
+- For rest callet ønsker jeg å bruke request og da må det legges til i prosjektet og enables for node red. Dette gjøres ved å oppdatere package.json samt legg til "express":"4.x" under dependencies og oppdater bluemix-settings.js
+- Disse filene finner du i zip filen du lastet ned etter du oprettet appen i bluemix (navnpåapp.zip) 
 ```javascript
   // bluemix-settings.js
 
@@ -82,7 +83,8 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
     }
 ```
 - Nå kan global context hentes ved "global.get('request')" i node red. Husk å push applikasjonen til bluemix!
-- cf push appname
+- Kjør kommandoen cf push appname fra root i app folderen din.
+
 - En function som sammenligner data fra watson med det du har i basen - kan se noe slikt ut:
 ```javascript
 var user = msg.insights;
@@ -199,7 +201,7 @@ console.log("Got request for tweets on : " + query);
 
 <img src="images/mimg5.png" height="300px" width="300px">
 
-- Test flow og se du får tweets tilbake som tekst. Send den til watson og se om flowen virker.
+- Test flow og se at du får tweet's tilbake som tekst. Send den til watson og se om flowen virker.
 - Watson personality virker bare på engelsk og spansk for tiden - det er jo enkelt å bruke google til oversetting fra norsk til engelsk…
 
 ```javascript
