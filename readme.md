@@ -46,7 +46,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - La oss på enkleste måte bygge en referanse base. Velg en Coudant out-put node og skriv hele insigth objectet dit.
 - Lag en funksjon som putter msg.insights over i msg.payload -  og velg i cloudant noden "store only payload object"
 ```
- msg.payload = msg.instights;
+ msg.payload = msg.insights;
  return msg;
 ```
 
