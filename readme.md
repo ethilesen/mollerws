@@ -230,7 +230,7 @@ googleTranslate.translate(msg.payload, 'no', 'en', function(err, translations) {
 <h2>Oppgave 2</h2>
 
 Her skal vi sette opp "løsningen" med et GUI i node.js
-Du trenger node.js, npm, git lokalt på maskinen din. Eller du kan bruke IBM DevOps Services på nett.
+Du trenger node.js, npm, git lokalt på maskinen din. Hvis du ikke har det eller ønsker det kan du bruke IBM DevOps Services på nett. Dette omtales lenger nede på siden.
 Jeg tror det er et relevant eksemple å ha koden kjørende lokalt og push over til bluemix når du ser alt virker greit. Men som nevnt du kan gjøre alt fra DevOps Services - noe som blir forklart til slutt.
 
 Hvis du har node,npm og git lokalt start slik.
