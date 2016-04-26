@@ -1,6 +1,7 @@
 <h1>Bluemix oppgave MøllerGruppen</h1>
 
 <h2>Oppgave 1 </h2>
+<img src="/images/image0.png">
 
 
 Denne oppgaven tar utgangspunkt i en Watson tjeneste som kan benyttes for å gjøre en personlighets analyse av tekst. Mer om tjenesten her: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html
