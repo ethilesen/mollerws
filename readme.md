@@ -87,6 +87,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 - Kjør kommandoen cf push appname fra root i app folderen din.
 
 - En function som sammenligner data fra watson med det du har i basen - kan se noe slikt ut:
+- Husk å legge inn username,password og url for Cloudant http://username:password@url
 ```javascript
 var user = msg.insights;
 var resarray = [];
