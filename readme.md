@@ -43,7 +43,7 @@ Jeg har to eksempler her - en hvor vi bygger dette opp som en prototype i Node-R
 
 - Endre debug noden din tilbake til å logge msg.payload
 - Test flowen - du skal se de fem kategoriene vi skal bruke i denne oppgaven.
-- La oss på enkleste måte bygge en referanse base. Velg en Coudant out-put node og skriv hele insigth objectet dit.
+- La oss på enkleste måte bygge en referanse base. Velg en Cloudant out-put node og skriv hele insigth objectet dit.
 - Lag en funksjon som putter msg.insights over i msg.payload -  og velg i cloudant noden "store only payload object"
 ```
  msg.payload = msg.insights;
